@@ -1,0 +1,154 @@
+# ============================================================
+#  PlaytimeRewards - configuration
+# ============================================================
+# Formats de temps : 30s, 15m, 2h, 1d, 1d12h30m ...
+# (un nombre seul est compté en MINUTES)
+
+# Temps d'inactivité (en secondes) après lequel un joueur est AFK
+# et ne gagne plus de temps de jeu. Mettre 0 pour désactiver l'anti-AFK.
+afk-timeout-seconds: 300
+
+# true  = les récompenses sont données automatiquement dès qu'elles sont débloquées
+# false = le joueur doit les récupérer dans /playtime rewards
+auto-claim: false
+
+# Shards : monnaie gagnée automatiquement avec le temps de jeu actif
+# (même compteur que les récompenses, donc l'anti-AFK s'applique aussi).
+# Le joueur gagne "amount" shard(s) toutes les "interval" de temps de jeu.
+shards:
+  interval: 5m
+  amount: 1
+  notify: true
+
+gui:
+  title: "&8Récompenses &7- &aTemps de jeu"
+  info-name: "&eTon temps de jeu"
+  claim-all-name: "&aTout récupérer"
+  claimed-material: LIME_STAINED_GLASS_PANE
+
+# Variables dans les commandes : %player% = nom du joueur
+# Les commandes sont exécutées par la console.
+rewards:
+  30min:
+    time: 30m
+    name: "&a30 minutes"
+    icon: COOKIE
+    description:
+      - "&7Un petit bonus pour bien commencer."
+    commands:
+      - "give %player% bread 16"
+      - "eco give %player% 500"
+
+  1h:
+    time: 1h
+    name: "&a1 heure"
+    icon: IRON_INGOT
+    description:
+      - "&7Tu commences à prendre tes marques."
+    commands:
+      - "give %player% iron_ingot 16"
+      - "eco give %player% 1000"
+      - "shards give %player% 5"
+
+  3h:
+    time: 3h
+    name: "&b3 heures"
+    icon: GOLDEN_APPLE
+    description:
+      - "&7Un vrai joueur régulier !"
+    commands:
+      - "give %player% golden_apple 5"
+      - "eco give %player% 3000"
+
+  6h:
+    time: 6h
+    name: "&b6 heures"
+    icon: DIAMOND
+    description:
+      - "&7Des diamants bien mérités."
+    commands:
+      - "give %player% diamond 8"
+      - "eco give %player% 6000"
+      - "shards give %player% 20"
+
+  12h:
+    time: 12h
+    name: "&d12 heures"
+    icon: EXPERIENCE_BOTTLE
+    description:
+      - "&7De l'expérience en quantité."
+    commands:
+      - "give %player% experience_bottle 32"
+      - "eco give %player% 12000"
+
+  1d:
+    time: 1d
+    name: "&d1 jour"
+    icon: ENDER_PEARL
+    description:
+      - "&724 heures passées sur le serveur !"
+    commands:
+      - "give %player% ender_pearl 8"
+      - "give %player% diamond 16"
+      - "eco give %player% 25000"
+      - "shards give %player% 50"
+
+  3d:
+    time: 3d
+    name: "&63 jours"
+    icon: NETHERITE_INGOT
+    description:
+      - "&7Tu fais partie des piliers du serveur."
+    commands:
+      - "give %player% netherite_ingot 2"
+      - "eco give %player% 75000"
+
+  7d:
+    time: 7d
+    name: "&c&l7 jours"
+    icon: NETHER_STAR
+    description:
+      - "&7Une semaine complète de jeu. Respect !"
+    commands:
+      - "give %player% netherite_ingot 5"
+      - "give %player% totem_of_undying 1"
+      - "eco give %player% 200000"
+      - "shards give %player% 200"
+      - "broadcast &6%player% &ea atteint &c7 jours &ede temps de jeu !"
+
+messages:
+  prefix: "&8[&aPlaytime&8] &7"
+  own-time: "Tu as joué &a%time%&7."
+  other-time: "&e%player% &7a joué &a%time%&7."
+  reward-unlocked: "&aNouvelle récompense débloquée : %reward% &7- &e/playtime rewards"
+  reward-claimed: "&aTu as récupéré la récompense %reward%&a !"
+  nothing-to-claim: "&cTu n'as aucune récompense à récupérer pour le moment."
+  claimed-count: "&aTu as récupéré &e%count% &arécompense(s) !"
+  join-pending: "&eTu as &a%count% &erécompense(s) à récupérer ! &7/playtime rewards"
+  top-header: "&6&lTop temps de jeu"
+  top-line: "&e#%rank% &f%player% &8- &a%time%"
+  player-not-found: "&cJoueur introuvable."
+  no-permission: "&cTu n'as pas la permission."
+  players-only: "&cCette commande est réservée aux joueurs."
+  reloaded: "&aConfiguration rechargée."
+  admin-done: "&aTemps de jeu de &e%player% &amodifié : &f%time%"
+  invalid-time: "&cTemps invalide. Exemple : 1d12h30m"
+  usage: "&cUtilisation : /playtime [rewards|claim|top|joueur]"
+  usage-admin: "&cUtilisation : /playtime admin <set|add|remove|reset> <joueur> [temps]"
+  shard-earned: "&b+%amount% shard(s) &7pour ton temps de jeu &8(total : &b%total%&8)"
+  shards-balance: "&7Tu as &b%shards% &7shards."
+  shards-other: "&e%player% &7a &b%shards% &7shards."
+  shards-top-header: "&b&lTop shards"
+  shards-top-line: "&e#%rank% &f%player% &8- &b%shards% shards"
+  shards-admin-done: "&aShards de &e%player% &a: &b%shards%"
+  invalid-number: "&cNombre invalide."
+  usage-shards: "&cUtilisation : /shards [top|joueur]"
+  usage-shards-admin: "&cUtilisation : /shards <give|take|set> <joueur> <nombre>"
+
+# Texte du lore dans le menu
+lore:
+  status-claimable: "&a&l» Clique pour récupérer !"
+  status-locked: "&c&lVerrouillé"
+  status-claimed: "&7Déjà récupéré"
+  required: "&7Temps requis : &f%time%"
+  remaining: "&7Il te reste : &e%time%"

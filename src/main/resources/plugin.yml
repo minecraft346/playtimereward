@@ -1,0 +1,28 @@
+name: PlaytimeRewards
+version: ${project.version}
+main: fr.playtime.PlaytimeRewards
+api-version: "1.16"
+description: Temps de jeu avec récompenses à débloquer, façon DonutSMP
+author: Playtime
+
+commands:
+  playtime:
+    description: Voir son temps de jeu et ses récompenses
+    aliases: [pt, tempsdejeu]
+    usage: /<command> [rewards|claim|top|joueur]
+
+  shards:
+    description: Voir ses shards (monnaie gagnée avec le temps de jeu)
+    aliases: [shard]
+    usage: /<command> [top|joueur]
+
+permissions:
+  playtime.use:
+    description: Utiliser /playtime, le menu et les récompenses
+    default: true
+  playtime.others:
+    description: Voir le temps de jeu des autres joueurs
+    default: true
+  playtime.admin:
+    description: Reload et modification du temps de jeu
+    default: op
